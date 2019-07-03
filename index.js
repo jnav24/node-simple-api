@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const moment = require('moment');
 const PORT = process.env.PORT || 5000;
 
 const logger = (req, res, next) => {
     console.log('hello');
-    console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
+    console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}: ${moment().format()}`);
     next();
 };
 
