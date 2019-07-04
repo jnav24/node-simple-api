@@ -62,4 +62,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    return res.status(200).json({
+        data: members.filter((member) => member.id !== Number(req.params.id)),
+        msg: '',
+    });
+});
+
 module.exports = router;
