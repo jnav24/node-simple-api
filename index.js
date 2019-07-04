@@ -10,8 +10,16 @@ const PORT = process.env.PORT || 5000;
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: 'Member App',
+    });
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/members', router);
 
